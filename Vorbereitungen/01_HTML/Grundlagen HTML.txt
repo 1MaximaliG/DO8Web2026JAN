@@ -1,0 +1,472 @@
+=======
+ HTML5
+=======
+weiter quellen:
+	-https://wiki.selfhtml.org/
+	-https://www.w3schools.com/
+	-https://www.mediaevent.de/
+----------------------
+Auszeichnungssprache zur Beschreibung
+der semantischen (inhaltlichen) Struktur
+einer Webanwendung
+
+----------------------
+Grundaufbau der Datei:
+----------------------
+
+<!doctype html>
+<html>
+  <head>
+    <title>Der Titel</title>
+	...
+  </head>
+  <body>
+    <p>Ein wenig Text ...</p>
+	...
+  </body>
+</html>
+
+----------
+Grammatik:
+----------
+
+<tag attribut1="Wert1" attribut2="Wert2">Inhalt des Tags</tag>
+
+Aber:
+<br> 		Zeilenumbruch
+<hr>		Horizontale Linie
+<meta ...>	Meta-Angabe (siehe Seite 13)
+<img ...>	Bild/Grafik
+
+Verschachtelung:
+<tag1>
+  <tag2>
+    ...
+  </tag2>
+</tag1>
+
+Kommentare:
+<!-- Kommentar -->
+
+Sprache/Zeichensatz/Sonderzeichen:
+<html lang="de">		Sprache einstellen (auch mehrfach)
+<meta charset="utf-8">	Zeichensatz festlegen
+&	&amp;
+<	&lt;
+>	&gt;
+...
+
+Startseite:
+index.htm(l)
+
+----------
+Meta-Tags:
+----------
+
+Werden im <head> notiert
+
+Meta-Tags mit name:
+Autorenangabe
+	<meta name=“author“ content=“Paul“>
+Datumsangabe
+	<meta name=“date“ content=“2023–05–09“>
+Zugriff durch Suchprogramme verbieten
+	<meta name=“robots“ content=“noindex nofollow“>
+Zugriff durch Suchprogramme gestatten
+	<meta name=“robots“ content=“index“>
+Kurzbeschreibung für Suchprogramme
+	<meta name=“description“ content=“Portal für Webdesigner“>
+Schlüsselwörter für Suchprogramme
+	<meta name=“keywords“ content=“Gestaltung,Webdesign,Layout,Design,Mediengestalter,Medien“>
+Anpassung an den Viewport
+	<meta name=“viewport“ content=“width=device-width, initial-scale=1.0“>
+...
+
+Meta-Tags mit http-equiv:
+Angabe des Unicode-Zeichensatzes
+	<meta http-equiv=“content-type“ httpequiv=“text/html“ charset=“utf-8“>
+Seite vom Server und nicht aus Cache laden
+	<meta http-equiv=“expires“ content=“0“>
+Seite neu laden, hier nach fünf Sekunden
+	<meta http-equiv=“refresh“ content=“5“>
+Weiterleitung, hier nach fünf Sekunden
+	<meta http-equiv=“refresh“ content=“5; URL=http://www.xyz.de“>
+...
+
+-----------------
+Dokumentstruktur:
+-----------------
+
+Abschnitt			<section>...</section>
+Artikel				<article>...</article>
+Kopfbereich			<header>...</header>
+Fußbereich			<footer>...</footer>
+Navigationsbereich	<nav>...</nav>
+
+Beispiel:
+<section>
+  <header>
+    <h1>Mein Blog</h1>
+  </header>
+  <article>
+    <h2>Headline</h2>
+    <p>Hier der Inhalt</p>
+  </article>
+  <article>
+    <h2>Headline</h2>
+    <p>Hier der Inhalt</p>
+  </article>
+  <footer>
+    <p>Impressum</p>
+  </footer>
+</section>
+
+-----------------
+Block und Inline:
+-----------------
+
+A block-level element always starts on a new line, and the browsers automatically 
+add some space (a margin) before and after the element. A block-level element 
+always takes up the full width available (stretches out to the left and right as 
+far as it can).
+
+An inline element does not start on a new line. An inline element only takes up 
+as much width as necessary.
+
+
+-------------
+Textstruktur:
+-------------
+
+Überschriften (headline) unterschiedlicher Ordnung
+	<h1>...</h1>	Document (1x)
+	<h2>...</h2>	Section
+	<h3>...</h3>	Article
+	...
+	<h6>...</h6>
+Absatz (paragraph)
+	<p>...</p>
+Zeilenumbruch (break)
+	<br>
+Aufzählungsliste (unordered list)
+	<ul>
+	  <li>...</li>
+	  <li>...</li>
+	  ...
+	</ul>
+Nummerierte Liste (ordered list)
+	<ol>
+	  <li>...</li>
+	  <li>...</li>
+	  ...
+	</ol>
+Abbildung
+	<figure>
+	  <img src=“...“>
+	</figure>
+Horizontale Linie
+	<hr>
+Allgemeines Blockelement (für CSS)
+	<div>...</div>
+
+-----------------
+Textauszeichnung:
+-----------------
+
+Abkürzung
+	<abbr>...</abbr>
+Textblock als Zitat
+	<blockquote>...</blockquote>
+Auszeichnung kursiv
+	<em>...</em>
+Kurzes Zitat
+	<q>...</q>
+Allgemeines Inline-Element (für CSS)
+	<span>...</span>
+Auszeichnung fett
+	<strong>...</strong>
+Tiefgestellter Text
+	<sub>...</sub>
+Hochgestellter Text
+	<sup>...</sup>
+Datums- oder Zeitangabe
+	<time>...</time>
+
+
+---------
+Tabellen:
+---------
+
+	---------
+	| A | B |
+	---------
+	| C | D |
+	---------
+
+<table>
+  <tr>
+    <th>A</th>		Kopfzeile
+    <th>B</th>
+  </tr>
+  <tr>
+    <td>C</td>		Datenzeile
+    <td>D</td>
+  </tr>
+  <!-- weitere Zeilen -->
+</table>
+
+	---------
+	|   E   |
+	---------
+	| F | G |
+	---------
+
+<table>
+  <tr>
+    <td colspan=“2“>E</td>
+  </tr>
+  <tr>
+    <td>F</td>
+    <td>G</td>
+  </tr>
+</table>
+
+	---------
+	|   | I |
+	| H |----
+	|   | J |
+	---------
+
+<table>
+  <tr>
+    <td rowspan=“2“>H</td>
+    <td>I</td>
+  </tr>
+  <tr>
+    <td>J</td>
+  </tr>
+</table>
+
+<table border="1">
+	<!--alte variante rahmen um die einzelnen zellen anzuzeigen>
+<table>
+
+------
+Links:
+------
+
+Interne Links zu Dateien:
+
+Hyperlink zur Datei „index.htm“
+	<a href=“index.htm“>Homepage</a>
+Hyperlink in Unterverzeichnis
+	<a href=“sites/index.htm“>Homepage</a>
+Hyperlink in übergeordnetes Verzeichnis
+	<a href=“../index.htm“>Homepage</a>
+Hyperlink zu einer PDF-Datei
+	<a href=“info.pdf“>Download</a>
+Hyperlink mit Grafik
+	<a href=“news.htm“><img src=“button.gif“></a>
+
+Externe Links zu Webseiten:
+
+Hyperlink zu externer Adresse (URL)
+	<a href=“http://www.springer.de“>Springer-Verlag</a>
+Hyperlink in neuem Browsertab
+	<a href=“http://www.springer.de“ target=“_blank“>Springer-Verlag</a>
+Hyperlink im selben Browsertab
+	<a href=“http://www.springer.de“ target=“_self“>Springer-Verlag</a>
+	Hinweis:
+	Ohne Angabe des target-Attributs wird die Webseite ebenfalls im selben Tab geöffnet.
+Hyperlink mit Tooltipp
+	<a href=“http://www.springer.de“ title=“Link zu Springer“>Springer</a>
+Hyperlink mit Grafik
+	<a href=“http://www.springer.de“>
+		<img src=“button.gif“>
+	</a>
+
+Interne Links in der Datei:
+
+<a id=“oben“></a>
+<a href=“#kap1“>zu Kapitel 1</a>
+<a href=“#kap2“>zu Kapitel 2</a>
+...
+<h4 id=“kap1“>Kapitel 1</h4>
+...
+<h4 id=“kap2“>Kapitel 2</h4>
+...
+<a href=“#oben“> zum Seitenanfang</a>
+
+E-Mail-Links:
+
+E-Mail-Link ruft E-Mail-Programm auf
+	<a href=“mailto:paul@xyz.de“>paul@xyz.de</a>
+E-Mail mit Kopieempfänger
+	<a href=“mailto:paul@xyz.de?cc=mich@xyz.de“>paul@xyz.de</a>
+E-Mail mit Betreff
+	<a href=“mailto:paul@xyz.de?subject=Anmeldung“>paul@xyz.de</a>
+E-Mail mit vordefiniertem Text
+	<a href=“mailto:paul@xyz.de?body=Hiermit bestätigen wir Ihre Anmeldung.“>paul@xyz.de</a>
+E-Mail mit mehreren Angaben:
+	<a href=“mailto:paul@xyz.de?cc=mich@xyz.de&amp;subject=Anmeldung&amp;body=Hiermit bestätigen wir Ihre Anmeldung.“>paul@xyz.de</a>
+
+-----------
+Navigation:
+-----------
+
+<nav>
+  <ul>
+    <li><a href=“#“>Home</a></li>
+    <li><a href=“#“>News</a></li>
+    <li><a href=“#“>Produkte</a></li>
+    <li><a href=“#“>Kontakt</a></li>
+    <li><a href=“#“>Impressum</a></li>
+  </ul>
+</nav>
+
+<nav>
+  <details>
+    <summary>
+	  <a href=“#“>Herren</a>
+    </summary>
+    <ul>
+      <li><a href=“#“>Hemden</a></li>
+      <li><a href=“#“>Anzüge</a></li>
+    </ul>
+  </details>
+  <details>
+    <summary>
+	  <a href=“#“>Damen</a>
+    </summary>
+    <ul>
+      <li><a href=“#“>Schuhe</a></li>
+      <li><a href=“#“>Kleider</a></li>
+    </ul>
+  </details>
+...
+</nav>
+
+----------------
+Bilder/Grafiken:
+----------------
+
+GIF		Graphics Interchange Format
+JP(E)G	Joint Photographic Experts Group
+PNG		Portable Network Graphics
+SVG		Scalable Vector Graphic
+
+Format		JPEG 		GIF 		PNG-8 		PNG-24		SVG
+Vektor-		nein 		nein 		nein 		nein 		ja
+format
+Farben		16,7 Mio.	256 		256 		16,7 Mio. 	16,7 Mio.
+Qualität	wählbar		hoch 		hoch 		hoch 		hoch
+Animation	nein 		ja 			nein 		nein 		ja
+Skalier-	nein 		nein		nein 		nein 		ja
+barkeit
+Transparenz	nein 		(ja)		nein 		ja 			ja
+ICC-Profil	ja 			nein 		nein 		nein 		nein
+Anwendung	Fotos 		Grafiken	Grafiken	Fotos, 		(skalierbare)
+												freige-		Grafiken
+												stellte
+												Bilder
+
+Bilder/Grafiken referenzieren:
+
+Bild „button.gif“ im selben Verzeichnis
+	<img src=“button.gif“>
+Bild im Unterverzeichnis
+	<img src=“bilder/button.gif“>
+Bild im übergeordneten Verzeichnis
+	<img src=“../button.gif“>
+Angabe eines Alternativtextes
+	<img src=“news.gif“ alt=“Link zu den neuesten Meldungen“>
+Bild mit Breiten- und Höhenangabe in Pixel
+	<img src=“button.gif“ width=“200“ height=“100“>
+Semantische Kennzeichnung
+	<figure>
+	  <img src=“button.gif“>
+	</figure>
+
+----------
+Formulare:
+----------
+
+Definition eines Formulars:
+
+<form>
+  <!-- Formularelemente -->
+</form>
+
+Textfelder:
+
+Einzeiliges Textfeld
+	<input type=“text“ name=“…“ size=“…“ maxlength=“…“ value=“…“>
+Mehrzeiliges Textfeld
+	<textarea name=“…“ cols=“…“ rows=““></textarea>
+Beispiel
+	<input type=“text“ name=“vorname“ size=“25“ maxlength=“40“>
+	<textarea name=“bemerkung“ cols=“20“ rows=“3“></textarea>
+
+Auswahllisten:
+
+Menü
+	<select name=“zahlung“ size“1“>
+	  <option>bitte wählen</option>
+	  <option>Kreditkarte</option>
+	  <option>Nachnahme</option>
+	  <option>Rechnung</option>
+	</select>
+
+Datenliste
+	<input type=“text“ name=“land“ list=“staat“ size=“30“><br>
+	<datalist id=“staat“>
+	  <option value=“Deutschland“>
+	  <option value=“Frankreich“>
+	  <option value=“Schweiz“>
+	</datalist>
+	Hinweis: Damit Textfeld und Datenliste verknüpft werden, 
+	muss der unter list vergebene Name mit der id übereinstimmen.
+
+Radiobuttons/Checkboxen:
+
+Radiobutton
+	<input type=“radio“ name=“anrede“ value=“Herr“ checked>Herr
+	<input type=“radio“ name=“anrede“ value=“Frau“>Frau
+Checkbox
+	<input type=“checkbox“ name=“newsletter“ value=“News“ checked>Newsletter abonnieren
+
+Buttons:
+
+Senden-Button
+	<input type=“submit“ name=“los“ value=“Absenden“>
+Reset-Button
+	<input type=“reset“ value=“Löschen“>
+Mehrere Senden-Buttons
+	<input type=“submit“ formaction=“warenkorb.php“ formmethod=“get“ value=“Warenkorb“>
+	<input type=“submit“ formaction=“kasse.php“ formmethod=“get“ value=“Zur Kasse“>
+
+Versteckte Felder:
+
+	<input type="hidden" value="123">
+
+Datei-Upload:
+
+<form enctype=“multipart/form-data“ name=“bild“ action=“bilder.php“ method=“post“>
+	<input type=“file“ name=“cover“ accept=“image/*“>
+</form>
+
+Validierung:
+
+Datum
+	<label for=“d“>Datum:</label>
+	<input type=“date“ id=“d“ required>
+E-Mail
+	<label for=“e“>E-Mail:</label>
+	<input type=“email“ id=“e“ required>
+PLZ
+	<label for=“p“>Plz:</label>
+	<input type=“text“ pattern=“[0-9{5}“ id=“p“ title=“01234“ size=“5“>
+Telefon
+	<label for=“t“>Telefon:</label>
+	<input type=“text“ pattern=“[0-9]{3,5}[/][0-9]{5,9}“ id=“t“ title=“01234/56789“ size=“10“>
+

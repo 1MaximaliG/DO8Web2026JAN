@@ -1,0 +1,25 @@
+            *{
+                font-family: Arial, Helvetica, sans-serif;
+            }
+            h1{
+                font-size: 1.5rem;
+                color:hsla(106, 34%, 50%, 0.519);
+            }
+            body{
+                background: radial-gradient(grey,white);
+            }
+            .content{
+                display: inline;
+                width: 300px;
+                min-height: 500px;
+                background-color: red;
+            }
+            #blaubg{
+                background-color: blue;
+            }
+            .subtitle{
+                text-decoration: underline;
+                color:blue;
+                background-color: white;
+            }
+            

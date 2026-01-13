@@ -1,0 +1,621 @@
+=====
+ CSS
+=====
+
+
+Allgemeine Definition einer Regel
+	selektor {
+		eigenschaft1: wert1;
+		eigenschaft2: wert2;
+		...
+	}
+
+Beispiel mit Kommentaren
+	/* Hauptüberschriften in Rot */
+	h1 {
+		font-family: Verdana;
+		font-size: 1.5em;
+		color: red;
+	}
+	/* Links ohne Unterstreichung */
+	a {
+		text-decoration: none;
+	}
+
+------------------
+Einbinden von CSS:
+------------------
+
+Lokales CSS:
+
+	<p style=“font-family: Arial; color:gray“>
+	  Die Schrift ist grau, aber hier ist sie <span style=“color:red“>rot</span>.
+	</p>
+	<div style=“background-color:gray; font-family: Arial; color:white“>
+	  Dieser Kasten ist grau, die Schrift weiß!
+	</div>
+
+Zentrales CSS:
+
+	<!doctype html>
+	<html>
+	<head>
+	  <style>
+	    body {
+	      background-color: white;
+	    }
+	    p {
+	      font-family: Arial;
+	      font-size: 0.5em;
+	    }
+	  </style>
+	</head>
+	...
+
+Externes CSS (<dateiname>.css):
+
+<link>-Element
+	<!doctype html>
+	<html>
+	<head>
+		<link rel=“stylesheet“ href=“styles.css“>
+	</head>
+	...
+@import-Direktive
+	<!doctype html>
+	<html>
+	<head>
+	  <style>
+	    @import url(“styles.css“);
+	  </style>
+	</head>
+	...
+
+----------
+Priorität:
+----------
+
+1. Lokales CSS
+2. Zentrales CSS
+3. Externes CSS
+
+
+-----------
+Selektoren:
+-----------
+			Einfachere schreibweise
+			https://code.visualstudio.com/docs/languages/emmet
+
+
+=> https://www.w3schools.com/cssref/css_selectors.php
+
+Einfache Selektoren:
+
+Universalselektor
+	* {
+		Eigenschaft1: Wert1;
+		Eigenschaft2: Wert2;
+		...
+	}
+HTML-Elemente (Tags)
+	tag-name {
+		Eigenschaft1: Wert1;
+		Eigenschaft2: Wert2;
+		...
+	}
+Klassen
+	.meine_klasse {
+		eigenschaft1: wert1;
+		eigenschaft2: wert2;
+		...
+	}
+IDs
+	#id {
+		eigenschaft1: wert1;
+		eigenschaft2: wert2;
+		...
+}
+Attribute
+	[Attribut] {
+		eigenschaft1: wert1;
+		eigenschaft2: wert2;
+		...
+	}
+	[Attribut=Wert] {
+		eigenschaft1: wert1;
+		eigenschaft2: wert2;
+		...
+	}
+
+Kombinationen:
+
+Klasse mit HTML-Element
+	tag.klasse {
+		...
+	}
+Aufzählung gleichberechtigter Selektoren
+	element1, element2 {
+		...
+	}
+element2 innerhalb von element1
+	element1 element2 {
+		...
+	}
+element2 als direkte Kinder von element1
+	element1 > element2 {
+		...
+	}
+element2 als erstes Kind von element1
+	element1 + element2 {
+		...
+	}
+Nesting (mit &)
+	.meine_klasse {
+		...
+		& > tag {
+			eigenschaft1: wert1;
+			...
+		}
+	}
+
+
+------------------------
+Pseudo-Klassen/Elemente:
+------------------------
+
+Pseudoklassen:
+
+Definieren einen speziellen Zustand eines Elements
+	valid/invalid
+	required/optional
+	visited/unvisited
+	...
+Werden mit einfachem : abgetrennt
+
+unbesuchter Link
+	:link
+besuchter Link
+	:visited
+mit Maus berührter Link (sogenannter „Mouseover“)
+	:hover
+aktuell angeklickter Link
+	:active
+ausgewähltes Element, z. B. Formularfeld
+	:focus
+n-tes Vorkommmen eines HTML-Elements.
+	:nth-of-type(n)
+	Das n in der Klammer kann eine Ziffer, eine Funktion (z.B. 2n) oder
+	ein Schlüsselwort (even für gerade, odd für ungerade) sein.
+
+Pseudoelemente (immer mit ::):
+
+Zielen auf bestimmte Teile eines Elements.
+	first letter or line
+    content before or after an element
+    markers of list items
+    viewbox behind a dialog box
+Werden mit doppeltem :: abgetrennt
+
+erste Zeile
+	::first-line
+erster Buchstabe
+	::first-letter
+Einfügen vor dem Element, content gibt den Inhalt an.
+	::before
+Einfügen nach dem Element, content gibt den Inhalt an.
+	::after
+Vom User selektierter Text
+	::selection
+
+----------
+Vererbung:
+----------
+
+CSS-Eigenschaften werden vom Eltern- an die Kind-Elemente vererbt.
+Kinder können überschreiben.
+
+Spezifität von Selektoren:
+
+Selektor(kombination)						A	B	C	D	Beispiel
+Einfache Selektoren
+Universalelement							0	0	0	0	* {...}
+HTML5-Element								0	0	0	1	body {...}
+Klasse oder Pseudoklasse					0	0	1	0	.rot {...}
+Individualformat							0	1	0	0	#blau {...}
+Lokale style-Definition						1	0	0	0	<p style=“...“>...</p>
+Kombinierte Selektoren
+HTML-Element:Pseudoklasse					0	0	1	1	a:hover {...}
+HTML-Element HTML-Element					0	0	0	2	article p {...}
+Individualformat HTML-Element				0	1	0	1	#blau p {...}
+Individualformat HTML-Element:Pseudoklasse	0	1	1	1	#rot a:hover {...}
+
+Höchste Zahl gewinnt!
+
+Rangfolge:
+
+1.	Autoren-CSS	(Vom Entwickler geschrieben)
+2.	User-CSS	(User-Einstellungen im Browser)
+3.	Browser-CSS	(Browser-Standard)
+
+
+-------------
+Maßeinheiten:
+-------------
+
+Maßeinheiten immer ohne Leerzeichen anhängen!
+
+Absolute Einheiten:
+
+Können nur sinnvoll für Ausdrücke verwendet werden!
+
+Einheit	Bedeutung				Beispiel
+px 		Pixel, absolute 		width: 100px;
+		Anzahl der Bildpunkte
+		eines Endgeräts
+mm		Millimeter				height: 20mm;
+cm		Zentimeter				margin: 1cm;
+pt		Punkt (= 0,3528 mm)		line-height: 12pt;
+pc		Pica (= 12 pt)			font-size: 1pc;
+in		Inch (= 2,54 cm)		padding: 0.5in
+
+Relative Einheiten:
+
+Einheit	Bedeutung				Beispiel
+em		M-Höhe, Bezug:			font-size: 1.2em
+		Element-Schriftgröße
+rem		M-Höhe, Bezug:			font-size: 2rem
+		Root-Schriftgröße
+%		Prozent, Bezug zum		width: 50%;
+		Elternelement
+vw		proz. Anteil an Breite	div: 50vw;
+		des Viewports
+vh		proz. Anteil an Höhe	margin: 5vh;
+		des Viewports
+
+
+------------
+Farbangaben:
+------------
+
+Hexadezimale Farben:
+
+#xxxxxx (Rot|Grün|Blau)
+
+#000000	Weiß
+#FF0000	Rot
+#00FF00	Grün
+#0000FF	Blau
+#FFFFFF	Schwarz
+
+Dezimale Angaben:
+
+rgb(xxx,xxx,xxx) (Rot|Grün|Blau)
+(0-255 oder Prozent)
+
+rgb(0,0,0)			Weiß
+rgb(255,0,0)		Rot
+rgb(0,255,0)		Grün
+rgb(0%,0%,100%)		Blau
+rgb(255,255,255)	Schwarz
+
+rgba(xxx,xxx,xxx,y.z)
+
+y.z => Transparenz von 0 (durchsichtig) bis 1.0 (undurchsichtig)
+
+Namen:
+
+Für 140 Farben sind Namen definiert:
+	Hexcode	Farbname
+	#000000	black
+	#808080	gray
+	#C0C0C0 silver
+	#FFFFFF white
+	#00008B darkblue
+	#00FFFF cyan
+	#006400 darkgreen
+	...
+
+Farbverläufe:
+
+Allg. Definition eines linearen Farbverlaufs
+	background: linear-gradient(richtung, farbe1, farbe2,...);
+	richtung kann z. B. to bottom, to top, to right, to left 
+	oder eine Winkelangabe z. B. 45deg sein.
+Allg. Definition eines radialen Farbverlaufs
+	background: radial-gradient(farbe1, farbe2,...);
+Beispiel
+	<!doctype html>
+	<html>
+	<head>
+		<style>
+			#box1 {
+				height: 200px;
+				width: 200px;
+				background: linear-gradient (45deg,yellow,red);
+			}
+			#box2 {
+				height: 200px;
+				width: 200px;
+				background: radial-gradient (cyan,blue);
+			}
+		</style>
+	</head>
+	<body>
+		<div id=“box1“></div>
+		<div id=“box2“></div>
+	</body>
+	</html>
+
+-------------
+Schriftarten:
+-------------
+
+Verwendung einer Systemschrift
+	font-family: Arial;
+	font-family: “Times New Roman“;
+
+Einbinden einer Schrift mit @font-face
+	@font-face {
+		font-family: Roboto;
+		src: url(Roboto-Black.ttf);
+	}
+Beispiel
+	<style>
+		@font-face {
+			font-family: Roboto;
+			src: url(Roboto-Black.ttf);
+		}
+		p {
+			font-family: Roboto, Arial, sans-serif;
+			font-size: 2.0em;
+		}
+	</style>
+
+Schrifteigenschaften:
+
+Schriftgröße
+	font-size: 10px; | 1.5em; | 100%;
+Schriftstil
+	font-style: normal; | italic; | oblique;
+Schriftstärke
+	font-weight: normal; | bold; | 100; | ... | 900;
+Schriftweite
+	font-stretch: normal; | extra-condensed; | condensed; | semi-condensed; | semi-expanded; | expanded; | extra-expanded;
+Satzart
+	text-align: left; | right; | center; | justify;
+Zeilenabstand
+	line-height: 1.5em; | 18px;
+Zeichenabstand
+	letter-spacing: 0.2em; | 1px;
+Wortabstand
+	word-spacing: 0.5em; | 2px;
+Textauszeichnung
+	text-decoration: none; | underline; | overline; | blink; | line-through;
+Schriftfarbe
+	color: black; | #0000FF; | rgb(100,200,0);
+Erstzeileneinzug
+	text-indent: 1.0em; | 2mm;
+Vertikale Ausrichtung
+	vertical-align: top; | middle; | bottom;
+Textumbruch
+	white-space: normal; | pre;
+
+-------
+Listen:
+-------
+
+Aufzählungszeichen bei <ul>
+	list-style-type: none;		ohne
+	list-style-type: disc;		gefüllter Kreis
+	list-style-type: circle;	leerer Kreis
+	list-style-type: square;	Quadrat
+Nummerierung bei <ol>
+	list-style-type: decimal;		1., 2., 3.
+	list-style-type: lower-roman;	i., ii., iii.
+	list-style-type: upper-roman;	I., II., III.
+	list-style-type: lower-alpha;	a., b., c.
+	list-style-type: upper-alpha;	A., B., C.
+Position des Aufzählungszeichens
+	list-style-position: inside; | outside;
+	inside	innerhalb des Textblockes
+	outside	außerhalb des Textblockes
+Eigene Grafik als Aufzählungszeichen
+	list-style-image: url(punkt.gif);
+
+---------
+Tabellen:
+---------
+
+Zellenabstand
+	border-spacing: 5px;
+Überlagerung von Rahmen
+	border-collapse: separate; | collapse;
+	separate	keine
+	collapse	überlagert
+Umgang mit leeren Zellen
+	empty-cells: show; | hide;
+	show	Anzeige
+	hide	keine Anzeige
+
+-------------
+Hintergründe:
+-------------
+
+Hintergrundfarbe
+	background-color: gray; | #0000FF; | ...
+Hintergrundbild
+	background-image: url(“grafik.gif“);
+Bildwiederholung
+	background-repeat: repeat; | repeat-y; | repeat-x; | no-repeat;
+Bildposition
+	background-position: 10vw 0vh; | 20% 50%; | top left; | bottom right; | center center;
+Bildgröße
+	background-size: 100vw; | 100% 50%; | contain; | cover;
+Scrollverhalten
+	background-attachment: scroll; | fixed;
+
+
+-------
+Layout:
+-------
+
+Block- und Inline-Elemente:
+
+Blockelemente
+	Dokumentstruktur z.B. <header>, <main>, <article>, <nav>, <footer>
+	Textstruktur z.B. <h1>, <p>, <li>, <table>, <div>
+Inline-Elemente
+	z.B. <a>, <b>, <i>, <img>, <input> und <span>
+Darstellung
+	display: block;			Blockelement
+	display: inline;		Inline-Element
+	display: inline-block;		Kombination
+	display: none;			ohne Anzeige
+
+
+--------------
+CSS-Boxmodell:
+--------------
+
+      margin
+-------------------
+|     padding     |
+|  -------------  |
+|  |           |  |
+|  |  content  |  |
+|  |           |  |
+|  -------------  |
+|                 |
+------border-------
+
+Box-Sizing
+	box-sizing: content-box; (default)
+		width & height wirken nur auf den content
+	box-sizing: border-box;
+		width & height wirken auf content, padding und border
+
+Eigenschaften von Blockelementen:
+
+Breite und Höhe
+	width: 600px;		feste Breite
+	width: 80vw;		relativ zu Viewport
+	min-width: 10vw;	minimale Breite
+	max-width: 800px;	maximale Breite
+	height: 100vh;		relativ zu Viewport
+	min-height: 10vh;	minimale Höhe
+	max-height: 600px;	maximale Höhe
+Außenabstände
+	margin-top: 100px;			oben
+	margin-bottom: 10vh;		unten
+	margin-left: 20%;			links
+	margin-right: 3.0em;		rechts
+	margin: 30px;				gleiche Abstände
+	margin: 5vh 2vw 5vh 2vw;	oben, rechts, unten, links
+Innenabstände
+	padding-top: 10px;		oben
+	padding-bottom: 5vh;	unten
+	padding-left: 20%;		links
+	padding-right: 3.0em;	rechts
+	padding: 5vw;			gleiche Abstände
+	padding: 2vh 5vw 0 5vw;	oben, rechts, unten, links
+Rahmenstärke
+	border-width: 3px;
+Rahmenart
+	border-style: none;		ohne
+	border-style: dotted;	gepunktet
+	border-style: dashed;	gestrichelt
+	border-style: solid;	durchgezogen
+	border-style: double;	doppelt
+Rahmenfarbe
+	border-color: #000000;
+Rahmen mit abgerundeten Ecken
+	border-radius: 20px;
+Rahmen (Kurzschreibweise)
+	border: 3px solid black;
+	border: 0.5em dotted #FF0000;
+Alle Eigenschaften zur Formatierung von Rahmen
+können auch auf einzelne Seiten begrenzt werden:
+	border-top-		oben
+	border-bottom-	unten
+	border-left-	links
+	border-right-	rechts
+Hintergrundfarbe
+	background-color: blue;
+	background-color: #A097FC;
+Hintergrundbild
+	background-image: url(“grafik.jpg“);
+
+Blockelemente positionieren:
+
+Variabel im Textfluss (Default)
+	position: static;
+Feste Position (kein Scrollen)
+	position: fixed;
+Variabel bis an definierte Grenze, danach fest
+	position: sticky;
+Absolute Position (innerhalb Elternelement)
+	position: absolute;
+Relative Position (innerhalb Elternelement)
+	position: relative;
+Werte zur Positionierung
+	top: 20px;		Abstand von oben
+	bottom: 10vh;	Abstand von unten
+	left: 10em;		Abstand von links
+	right: 50mm;	Abstand von rechts
+
+
+--------
+Flexbox:
+--------
+
+Flex-Container:
+
+Erzeugen eines Flex-Containers
+	display: flex;
+Anordnung der Flex-Items
+	flex-direction: row;			nebeneinander
+	flex-direction: row-reverse;	nebeneinander rückwärts
+	flex-direction: column;			untereinander
+	flex-direction: column-reverse;	untereinander rückwärts
+Horizontale Anordnung der Flex-Items
+	justify-content: flex-start;	links nach rechts
+	justify-content: center;		zentriert
+	justify-content: flex-end;		rechts nach links
+	justify-content: space-between;	Leerraum dazwischen
+	justify-content: space-around;	Leerraum dazwischen und am Rand
+Vertikale Anordnung der Flex-Items
+	align-items: flex-start;	oben
+	align-items: center;		mittig
+	align-items: flex-end;		unten
+	align-items: baseline;		Grundlinie des Containers
+	align-items: stretch;		strecken um auszufüllen
+Umbruch der Elemente
+	flex-wrap: nowrap;			Alle Elemente in einer Zeile
+	flex-wrap: wrap;			Umbrechen auf zusätzlich Zeilen
+	flex-wrap: wrap-reverse;	Umbrechen in umgekehrter Reihenfolge
+Abstand zwischen mehreren Zeilen
+	align-content: flex-start;		oben
+	align-content: flex-end;		unten
+	align-content: center;			mittig
+	align-content: space-between;	Leerraum dazwischen
+	align-content: space-around;	Leerraum dazwischen und am Rand
+	align-content: stretch;			strecken
+
+
+Flex-Items:
+
+Reihenfolge
+	order: n;
+	Hinweis: n ist eine ganze Zahl, 1 ganz oben bzw. ganz links
+Ausdehnungsverhalten
+	flex-grow: n;
+	Hinweis: n ist eine ganze Zahl, 0: unveränderlich, 1: leicht veränderlich, 2: stärker veränderlich usw.
+-------
+Buttons
+-------
+
+			Button Styling
+			https://www.w3schools.com/css/css3_buttons.asp
+
+
+
