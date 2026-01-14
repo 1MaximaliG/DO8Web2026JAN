@@ -1,0 +1,27 @@
+body{
+    display: grid;
+    grid-template: "header  header  header  header  header"
+                    "nav    box     box     box     box"
+                    "nav    box     box     box     box"
+                    "nav    box     box     box     box"
+                    "nav    box     box     box     box";
+                    gap: 1rem;
+}
+header{
+    grid-area: header;
+    background-color: aquamarine;
+}
+nav{
+    grid-area: nav;
+    background-color: cadetblue;
+    text-orientation: upright;
+    writing-mode: vertical-lr;
+}
+#first{
+    grid-row:2/span 2;
+    background-color: cornflowerblue;
+}
+#last{
+    grid-column: 4 /span 2;
+    background-color: crimson;
+}
