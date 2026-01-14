@@ -1,0 +1,19 @@
+nav{
+    border: 2px solid black;
+    margin:2px;
+    text-align: center;
+}
+.container{
+    border: 2px solid black;
+    display: flex;
+    flex-wrap: wrap; /*Ordnet die elemente von 
+    links nach rechts bis die zeile voll ist*/
+}
+.text-element{
+    border: 2px solid black;
+    margin: 2px;
+}
+/*alle elemente bis auf das letzte*/
+.text-element:nth-last-of-type(n+2){
+flex-grow: 1; /*füllt den vorhandenen Platz auf*/
+}
