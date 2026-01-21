@@ -1,0 +1,2 @@
+﻿CREATE DATABASE test123
+GO
