@@ -12,7 +12,9 @@ USE ProjektDB
 --      Kr�ger    17000
 --      Keller    25348
 
-
+SELECT nachname, id
+FROM Mitarbeiter
+WHERE nachname LIKE 'k%';
 
 -- Aufgabe 3.2
 --
@@ -26,7 +28,9 @@ USE ProjektDB
 --      M�ller    Gabriele  18316
 --      Keller    Hans      25348
 
-
+SELECT nachname, vorname , id 
+FROM Mitarbeiter
+WHERE vorname LIKE '_a%';
 
 -- Aufgabe 3.3
 --
@@ -38,7 +42,9 @@ USE ProjektDB
 --      a3  Stuttgart
 --      a5  Ulm
 
-
+SELECt id,stadt
+FROM Abteilung
+WHERE stadt LIKE '[n-z]%';
 
 -- Aufgabe 3.4
 --
@@ -55,7 +61,10 @@ USE ProjektDB
 --      24321  Schubert  Rolf
 --      27365  Albrecht  Lena
 
-
+SELECT id,vorname, nachname
+FROM Mitarbeiter
+WHERE nachname < 'k' OR nachname >= 'q' AND vorname NOT LIKE 'u%';
+--WHERE nachname NOT LIKE '[k-p]%' AND vorname NOT LIKE 'u%';
 
 -- Aufgabe 3.5
 --
@@ -70,8 +79,10 @@ USE ProjektDB
 --      Rolf      Schubert
 --      Lena      Albrecht
 --      Andreas   Probst
-
-
+SELECT vorname, nachname
+FROM Mitarbeiter
+--WHERE SUBSTRING(nachname,len(nachname)-1,2) NOT LIKE 'er';
+WHERE nachname NOT LIKE '%er';
 
 -- Aufgabe 3.6
 --
@@ -82,7 +93,9 @@ USE ProjektDB
 --      firma                  stadt
 --      100% Sonderzeichen AG  Baden_Baden
 
-
+SELECT firma, stadt
+FROM Kunde
+WHERE firma LIKE '%[_%]%' OR stadt LIKE '%[_%]%';
 
 -- Aufgabe 3.7
 --
@@ -98,7 +111,14 @@ USE ProjektDB
 --      28559  Mozer     Sibille   a1      Ulm
 --      29346  Probst    Andreas   a2      Augsburg
 
-
+SELECT *
+FROM Mitarbeiter
+--WHERE vorname LIKE '%[aeiou]%[aeiuo]%[aeiou]%';
+WHERE (LEN (vorname)*5 - len (replace(vorname,'a',''))
+		- len (replace(vorname, 'e',''))
+		- len (replace(vorname, 'i',''))
+		- len (replace(vorname, 'o',''))
+		- len (replace(vorname, 'u','')))>=3;
 
 -- Aufgabe 3.8
 -- 
@@ -109,7 +129,10 @@ USE ProjektDB
 --      28559  Mozer     Sibille  a1      Ulm
 --      29346  Probst    Andreas  a2      Augsburg
 
-
+SELECT *
+FROM Mitarbeiter
+WHERE vorname LIKE '_______';
+--WHERE len(vorname) = 7;
 
 -- Aufgabe 3.9
 --
@@ -120,7 +143,10 @@ USE ProjektDB
 --      9031   Meier     Rainer   a2      NULL
 --      17000  Kr�ger    Martin   a5      Ulm
 
-
+SELECT * 
+FROM Mitarbeiter
+--WHERE vorname NOT LIKE '%[aeiou]' AND Len(vorname) = 6;
+WHERE vorname NOT LIKE '%[aeiou]' AND vorname LIKE '______';
 
 -- Aufgabe 3.10
 --
@@ -133,4 +159,6 @@ USE ProjektDB
 --      17000  Kr�ger    Martin   a5      Ulm
 --      29346  Probst    Andreas  a2      Augsburg
 
-
+SELECT *
+FROM Mitarbeiter
+WHERE vorname LIKE '%[aeiuo]_';
