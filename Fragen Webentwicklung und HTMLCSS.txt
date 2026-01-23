@@ -1,0 +1,85 @@
+1. Was bedeutet "responsive Webdesign"?
+	Das Design einer Website passt sich flexibel an die Bildschirmgröße des Endgeräts an. Layout und Inhalt werden 	so optimiert, dass sie überall gut bedienbar und gut lesbar sind.
+
+2. Was ist ein Framework in der Webentwicklung?
+	Vorgefertigtes Software Grund-Gerüst zur Entwicklung von Webanwendungen.
+	Es gibt Frontend und Backend Frameworks. 
+	Eine Sammlung von Vorgefertigten Bausteinen, Werkzeugen oder Bibliotheken.
+
+3. Ist eine dynamische Website langsamer sein als eine statische? wenn ja warum?
+	Ja, dynamische Webseiten erzeugen den Inhalt zur Laufzeit.
+	*in der Praxis werden dynamische Webseiten gecached.
+
+4. Was ist der Unterschied zwischen statischen und dynamischen Webseiten?
+	Statisch: Vorgefertigte Seiten, Änderungen müssen über den Code eingepflegt werden.
+	Dynamisch: passen sich ständig an und können Informationen aus den Datenbanken ziehen.
+
+5. Was ist Frontend, was ist Backend?
+	Frontend: alles was der User sieht #UI (User Interface) HTML/CSS/JS
+	Backend: Datenverarbeitungsebene.	
+
+6. Was ist das Client-Server-Modell?
+	Client stellt eine anfrage, Server antwortet.
+
+7. Wofür steht HTTP?
+	Hypertext Transfer Protocol 
+
+8. Was ist der HTTP-Header?
+	Metadaten einer anfrage/antwort(ContentType, Cookies, Statuscode)
+
+9. Was sind HTTP-Status-Codes?
+	geben den Status einer Anfrage zurück. 100 Informationelle Antwort, 200 Erfolgreich, 500 Serverfehler, 400 	Client errors
+
+10. Was ist der Unterschied von HTTPS zu HTTP?
+	s, steht für secure. https ist verschlüsselt. http ist aus lesbar
+
+11. Welchen Port nutzen diese?
+	http: 80
+	https: 443
+
+12. Welches Zertifikat benötigt HTTPS?
+	TLS: Transport Layer Security- rootcertificate Authority muss im Browser installiert sein
+	SSL: ALT!!
+
+13. Wofür steht CDN? Wofür sind sie da?
+	Content Distribution Network, Inhalt wird auf verschieden Server verteilt um Lastspitzen abzufangen.
+	Server sind Weltweit verteilt damit immer eine möglichst kurze Route zur Verfügung steht.
+
+14. Wofür steht HTML?
+	Hypertext Markup Language
+
+15. Wofür wird HTML verwendet?
+	Grundgerüst einer Webseite. Strukturiert und gliedert die Elemente einer Webseite
+	stattet Elemente mit Semantischen Informationen aus
+
+16. Wie verlinkt man andere Webseiten? mit welchem Tag?
+	Anchor <a href="source/URL">hier klicken!</a>
+
+17. Wofür steht CSS?
+	Cascading Style Sheets
+
+18. Wofür wird CSS verwendet?
+	Gestaltet das aussehen unseres Webseiten Inhalts.
+
+19. Was ist der zweck einer Klasse in CSS?
+	zur einfachen Selektion von HTML Elementen
+
+20. Was ist das Box-Modell, wie ist es aufgebaut?
+	Aufbau eines html Elementes. margin, border, padding, Content
+
+22. Was macht das Grid-System für Webseiten besser?
+	Es erlaubt ein 2D Layout durch Zeilen und Spalten. Macht Komplexe Layouts einfacher zu gestalten.
+
+23. Was ist Barrierefreiheit?(bezogen auf HTML und CSS)
+	Rücksichtnahme: Farbenblindheit, Leseschwäche bis Blindheit
+	Semantisches Markup!!!!
+	
+24. Was macht das alt="" Attribut bei Bildern in HTML?
+	 Liefert ein Feld für Textuelle Beschreibung des Inhaltes, welches durch Text-to-Speech ausgegeben werden kann
+
+25. Welche Methoden/Calls bietet der HTTPClient?
+	GET
+	POST
+	PUT
+	DELETE
+
